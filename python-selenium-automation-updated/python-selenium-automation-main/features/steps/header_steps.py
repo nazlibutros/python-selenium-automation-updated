@@ -12,7 +12,6 @@ HEADER_LINKS = (By.CSS_SELECTOR, '[data-test*="web/GlobalHeader/UtilityHeader/"]
 def search_product(context, search_word):
     context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
     context.driver.find_element(*SEARCH_BTN).click()
-    sleep(7)
 
 @when('Click on Cart icon')
 def click_cart(context):
@@ -21,7 +20,6 @@ def click_cart(context):
 @when('Click Sign In')
 def click_sign_in(context):
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/AccountLink']").click()
-    sleep(5)
 
 @then('Verify header has {expected_amount} links')
 def verify_header_link_count(context, expected_amount):

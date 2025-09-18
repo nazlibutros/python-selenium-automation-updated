@@ -8,9 +8,10 @@ Feature: Tests for Cart functionality
 
   Scenario:   User can see added product into the cart
     Given Open Target main Page
-    When Search for tea
+    When Search for mug
     When Click on Add to Cart button
     When Store product name
     When Confirm Add to Cart button from side navigation
-    Given Open Target cart Page
+    And Open Target cart Page
+    Then Verify cart has 1 item(s)
     Then Verify cart has correct product
