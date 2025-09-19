@@ -3,19 +3,23 @@ from behave import given, when, then
 from time import sleep
 
 
-SEARCH_FIELD = (By.ID, 'search')
-SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
-CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
+
+# SEARCH_FIELD = (By.ID, 'search')
+# SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
+# CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
 HEADER_LINKS = (By.CSS_SELECTOR, '[data-test*="web/GlobalHeader/UtilityHeader/"]')
 
 @when('Search for {search_word}')
 def search_product(context, search_word):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
-    context.driver.find_element(*SEARCH_BTN).click()
+    print(search_word)
+    context.app.header.search_product(search_word)
+    # context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
+    # context.driver.find_element(*SEARCH_BTN).click()
 
 @when('Click on Cart icon')
 def click_cart(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart()
+    # context.driver.find_element(*CART_ICON).click()
 
 @when('Click Sign In')
 def click_sign_in(context):

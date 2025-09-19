@@ -8,8 +8,7 @@ from time import sleep
 driver_path = ChromeDriverManager().install()
 
 # create a new Chrome browser instance
-service = Service(driver_path)
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome()
 driver.maximize_window()
 driver.implicitly_wait(5)
 
