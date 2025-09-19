@@ -10,7 +10,7 @@ TOTAL_TXT = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
 
 @when('Open Target cart Page')
 def open_main(context):
-    context.driver.get('https://www.target.com/cart')
+    context.app.cart_page.open_cart()
 
 @then("Verify 'Your cart is empty' message is shown")
 def verify_empty_cart_msg(context):
@@ -21,8 +21,10 @@ def verify_empty_cart_msg(context):
 
 @then('Verify cart has {amount} item(s)')
 def verify_cart_items(context, amount):
-    cart_summary = context.driver.find_element(*TOTAL_TXT).text
-    assert f'{amount} item' in cart_summary, f"Expected {amount} items but got {cart_summary}"
+    print(amount)
+    context.app.cart_page.verify_cart_items(amount)
+    # cart_summary = context.driver.find_element(*TOTAL_TXT).text
+    # assert f'{amount} item' in cart_summary, f"Expected {amount} items but got {cart_summary}"
 
 @then('Verify cart has correct product')
 def verify_product_name(context):
